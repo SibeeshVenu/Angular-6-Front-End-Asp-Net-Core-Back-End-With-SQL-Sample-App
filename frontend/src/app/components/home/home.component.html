@@ -1,0 +1,39 @@
+<main class="text-center py-5">
+  <div class="container">
+    <div class="row">
+      <div class="container col-lg-6 col-md-12 headlinesSection">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title class="text-center">Top Headlines</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-single-news style="padding:10px;" *ngFor="let news of news" [news]="news" class="col-lg-4 col-md-12">
+            </app-single-news>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="container col-lg-6 col-md-12 categorySection">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Category Wise</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <mat-select (selectionChange)="loadNewsCategoryWise()" [(value)]="selected">
+                <mat-option value="general">General</mat-option>
+                <mat-option value="business">Business</mat-option>
+                <mat-option value="entertainment">Entertainment</mat-option>
+                <mat-option value="health">Health</mat-option>
+                <mat-option value="science">Science</mat-option>
+                <mat-option value="sports">Sports</mat-option>
+                <mat-option value="technology">Technology</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <app-single-news style="padding:10px;" *ngFor="let news of categoryNews" [news]="news" class="col-lg-4 col-md-12">
+            </app-single-news>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</main>

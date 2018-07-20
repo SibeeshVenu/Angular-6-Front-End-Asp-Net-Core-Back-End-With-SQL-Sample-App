@@ -1,0 +1,29 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">News App
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/top-headlines">Top Headlines</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/favorites">Favorites</a>
+        </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link" [matMenuTriggerFor]="menu">Categories ></a>
+        <mat-menu #menu="matMenu">
+          <a class="dropdown-item" routerLink="/top-headlines" mat-menu-item>Item 1</a>
+          <a class="dropdown-item" routerLink="/top-headlines" mat-menu-item>Item 2</a>
+        </mat-menu>
+      </li> -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input id="search-text" name="searchText" [(ngModel)]="searchText" class="form-control mr-sm-2" type="search" placeholder="Search"
+        aria-label="Search">
+      <button id="search-btn" (click)="search()" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+    </form>
+  </nav>
+</div>

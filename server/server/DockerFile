@@ -1,0 +1,14 @@
+FROM microsoft/aspnetcore-build:latest AS base
+WORKDIR /app
+EXPOSE 80
+
+COPY server/server/server.csproj ./
+RUN dotnet restore
+
+COPY . ./
+RUN dotnet publish -c Release -o /app
+
+WORKDIR /app
+COPY --from=publish /app .
+
+ENTRYPOINT ["dotnet", "server.dll"]
