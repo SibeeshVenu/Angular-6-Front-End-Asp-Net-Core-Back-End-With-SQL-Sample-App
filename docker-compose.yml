@@ -26,3 +26,14 @@ services:
       - DBHOST=newsdb
       - ASPNETCORE_ENVIRONMENT=Development
       - NewsConnection="data source=newsdb;initial catalog=M4Movies;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
+  newsapp:
+    image: newsapp
+    ports:
+      - "1400:1400"
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    links:
+      - newsdb
+      - newsapi
+    restart: always
