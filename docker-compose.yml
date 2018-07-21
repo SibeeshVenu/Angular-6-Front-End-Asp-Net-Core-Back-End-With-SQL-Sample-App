@@ -18,7 +18,7 @@ services:
       - "1433:1433"
     build:
       context: .
-      dockerfile: server/server/Dockerfile
+      dockerfile: server/server/DockerFile
     links:
       - newsdb
     restart: always
