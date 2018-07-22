@@ -18,7 +18,7 @@ services:
       - "1433:1433"
     build:
       context: .
-      dockerfile: server/server/Dockerfile
+      dockerfile: server/DockerFile
     links:
       - newsdb
     restart: always
@@ -32,7 +32,7 @@ services:
       - "1400:1400"
     build:
       context: .
-      dockerfile: frontend/Dockerfile
+      dockerfile: frontend/DockerFile
     links:
       - newsdb
       - newsapi
