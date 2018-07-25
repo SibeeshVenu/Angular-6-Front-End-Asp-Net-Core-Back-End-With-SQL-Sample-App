@@ -10,7 +10,7 @@ namespace test.Tests.Controllers
 {
     public class NewsControllerTests
     {
-        private readonly Mock<INewsService> _mock;
+        private Mock<INewsService> _mock;
         private readonly NewsController _newsController;
         public NewsControllerTests()
         {
@@ -22,7 +22,7 @@ namespace test.Tests.Controllers
         public void Should_Return_newss()
         {
             _mock.Setup(item => item.GetAllNews("", "", "")).Returns(It.IsAny<IEnumerable<News>>());
-            var actual = (OkObjectResult)_newsController.GetAll("");
+            var actual = (OkObjectResult)_newsController.GetAll("", "", "");
             _mock.Verify(item => item.GetAllNews("", "", ""), Times.Once);
             Assert.IsAssignableFrom<IActionResult>(actual);
             Assert.Equal(200, actual.StatusCode);

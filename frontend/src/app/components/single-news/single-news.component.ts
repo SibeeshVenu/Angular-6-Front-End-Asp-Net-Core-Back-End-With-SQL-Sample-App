@@ -33,7 +33,7 @@ export class SingleNewsComponent implements OnInit {
       this.apiService.post(Constants.UrlConstants.addToFavorites, this.news)
         .subscribe(
           data => {
-            alert('News addded to favorites!');
+            this.router.navigate(['/favorites']);
           },
           error => {
             alert(error.error);

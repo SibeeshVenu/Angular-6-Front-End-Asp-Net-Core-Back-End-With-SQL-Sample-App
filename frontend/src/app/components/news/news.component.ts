@@ -48,15 +48,7 @@ export class NewsComponent implements OnInit {
 
   bindNews(data: Array<News>) {
     data.forEach((n: News) => {
-      // if (n.urlToImage) {
-      // n.title = n.title.substring(0, 30);
       this.news.push(n);
-      // }
     });
   }
-
-  validateNews(news: News) {
-    return news.author;
-  }
-
 }

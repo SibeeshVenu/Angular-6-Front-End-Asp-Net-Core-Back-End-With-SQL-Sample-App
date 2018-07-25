@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   searchType: string;
   searchText: string;
   news: Array<News> = new Array<News>();
-  selected = 'sports';
+  selected = 'general';
   categoryNews: Array<News> = new Array<News>();
 
   constructor(private apiService: ApiService,

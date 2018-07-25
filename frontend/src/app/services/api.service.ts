@@ -7,20 +7,13 @@ import { Constants } from '../constants';
 
 @Injectable()
 export class ApiService {
-  private baseUrl: string;
   constructor(private http: Http) {
   }
   request(url: string, method: RequestMethod, body?: Object) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    if (this.isAuthApiCall(url)) {
-      this.baseUrl = environment.authApiUrl;
-    } else {
-      this.baseUrl = environment.apiUrl;
-      // headers.append('Authorization', `Bearer ${this.auth.getToken()}`);
-    }
     const requestOptions = new RequestOptions({
-      url: `${this.baseUrl}${url}`,
+      url: `${environment.apiUrl}${url}`,
       method: method,
       headers: headers
     });
@@ -31,9 +24,6 @@ export class ApiService {
     return this.http.request(request)
       .pipe(map((res: Response) => res.json()),
         catchError((res: Response) => this.onError(res)));
-  }
-  isAuthApiCall(url: string) {
-    return (url === Constants.UrlConstants.register || url === Constants.UrlConstants.login);
   }
   onError(res: Response) {
     const statusCode = res.status;

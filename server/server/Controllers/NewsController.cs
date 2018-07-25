@@ -31,7 +31,7 @@ namespace server.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, "Unable to fetch news this time, please try again later!.");
             }
         }
 
@@ -46,7 +46,7 @@ namespace server.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, "Unable to delete news from the favorite list this time, please try again later!.");
             }
         }
 
@@ -64,14 +64,13 @@ namespace server.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, "Unable to add news to the favorite list this time, please try again later!.");
             }
         }
 
         [HttpGet("getFavorites")]
         public IActionResult GetFavorites()
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
                 var movies = _newsService.GetFavorites();
@@ -79,7 +78,7 @@ namespace server.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(500, "Unable to get the favorite news this time, please try again later!.");
             }
         }
 

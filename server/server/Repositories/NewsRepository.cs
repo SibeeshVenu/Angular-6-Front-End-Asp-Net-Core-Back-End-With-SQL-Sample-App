@@ -28,6 +28,11 @@ namespace server.Repositories
             {
                 apiUrl = apiUrl + "&category=" + category;
             }
+            if (searchType == "top-headlines")
+            {
+                apiUrl = apiUrl + "&country=us";
+            }
+            
             var client = new RestClient(apiUrl);
             var request = new RestRequest(Method.GET);
             return client.ExecuteAsync(request).Result;

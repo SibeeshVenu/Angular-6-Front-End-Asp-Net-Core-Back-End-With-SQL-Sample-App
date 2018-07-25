@@ -1,35 +1,39 @@
-version: '3.6'
+version: '2.1'
 networks:
   default:
      driver: nat
      name: news_default
-services:
+services:  
   newsdb:
     image: microsoft/mssql-server-windows-express
     ports:
-      - "8000:80"
+      - "1433:1433"
     restart: always
+    networks:
+      - default
     environment:
       SA_PASSWORD: "P@ssw0rd"
       ACCEPT_YEULA: "Y"
   newsapi:
     image: newsapi
     ports:
-      - "1433:1433"
+      - "5000:80"
     build:
       context: .
-      dockerfile: server/DockerFile
+      dockerfile: server/server/DockerFile
     links:
       - newsdb
     restart: always
+    networks:
+      - default
     environment:
       - DBHOST=newsdb
       - ASPNETCORE_ENVIRONMENT=Development
-      - NewsConnection="data source=newsdb;initial catalog=M4Movies;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
+      - NewsDbConnection="data source=newsdb;initial catalog=NewsDB;"
   newsapp:
     image: newsapp
     ports:
-      - "1400:1400"
+      - "4200:4200"
     build:
       context: .
       dockerfile: frontend/DockerFile
@@ -37,3 +41,5 @@ services:
       - newsdb
       - newsapi
     restart: always
+    networks:
+      - default

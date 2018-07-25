@@ -13,6 +13,7 @@ import { HttpModule } from '../../node_modules/@angular/http';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { SingleNewsComponent } from './components/single-news/single-news.component';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { FourNotFourComponent } from './components/four-not-four/four-not-four.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DummyComponent } from './components/dummy/dummy.component';
     FooterComponent,
     NewsComponent,
     SingleNewsComponent,
-    DummyComponent
+    DummyComponent,
+    FourNotFourComponent
   ],
   imports: [
     HttpModule, FormsModule, BrowserModule,

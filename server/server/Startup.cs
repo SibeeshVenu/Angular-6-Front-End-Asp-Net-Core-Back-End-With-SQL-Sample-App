@@ -9,6 +9,7 @@ using server.Models;
 using server.Repositories;
 using server.Repositories.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace server
 {
@@ -41,8 +42,10 @@ namespace server
             services.AddTransient<INewsApiContext, NewsApiContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<NewsApiContext>();
+
             services.AddDbContext<NewsApiContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("NewsDbConnection")));
+                options.UseSqlServer(Environment.GetEnvironmentVariable("NewsDbConnection")));
+                //options.UseSqlServer(Configuration.GetConnectionString("NewsDbConnection")));
             services.AddMvc();
         }
 

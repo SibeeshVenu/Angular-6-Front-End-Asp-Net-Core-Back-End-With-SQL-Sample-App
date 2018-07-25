@@ -12,12 +12,12 @@ namespace test.Tests.Services
 {
     public class NewsServiceTests
     {
-        private readonly Mock<IUnitOfWork> _mock;
-        private readonly INewsService _newsService;
+        private Mock<IUnitOfWork> _mock;
+        private INewsService _newsService;
 
         public NewsServiceTests()
         {
-            _mock = new Mock<IUnitOfWork>();
+            _mock = new Moq.Mock<IUnitOfWork>();
             _newsService = new NewsService(_mock.Object);
         }
 
@@ -33,7 +33,7 @@ namespace test.Tests.Services
         public void GetNews_UnitOfService_GetAll_Called_Correctly()
         {
             _mock.Setup(item => item.News.GetAllNewsFromNewsDb("","","")).Returns(It.IsAny<string>());
-            _newsService.GetAllNews("","","");
+            var actual = _newsService.GetAllNews("","","");
             _mock.Verify(item => item.News.GetAllNewsFromNewsDb("","",""), Times.Once);
         }
 
@@ -41,7 +41,7 @@ namespace test.Tests.Services
         public void Get_Favorites_Called_Correctly()
         {
             _mock.Setup(item => item.News.GetAll()).Returns(It.IsAny<IEnumerable<News>>());
-            _newsService.GetFavorites();
+            var actual = _newsService.GetFavorites();
             _mock.Verify(item => item.News.GetAll(), Times.Once);
         }
 

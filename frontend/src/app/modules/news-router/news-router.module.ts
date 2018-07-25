@@ -5,22 +5,14 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { NewsComponent } from '../../components/news/news.component';
 import { Constants } from '../../constants';
 import { DummyComponent } from '../../components/dummy/dummy.component';
+import { FourNotFourComponent } from '../../components/four-not-four/four-not-four.component';
 
 const routes: Routes = [
     {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
-    }
-    // ,
-    // {
-    //     path: 'home',
-    //     component: NewsComponent,
-    //     data: {
-    //         searchType: 'news/getAll?searchType=' + Constants.UrlConstants.getTopHeadlinesNews
-    //     }
-    // },
-    ,
+    },
     {
         path: 'home',
         component: HomeComponent
@@ -56,6 +48,10 @@ const routes: Routes = [
         data: {
             searchType: 'news/getFavorites'
         }
+    },
+    {
+        path: '**',
+        component: FourNotFourComponent
     }
 ];
 
