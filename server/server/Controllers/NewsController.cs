@@ -15,11 +15,22 @@ namespace server.Controllers
     {
         private readonly INewsService _newsService;
 
+        /// <summary>
+        /// Controller to initialize service
+        /// </summary>
+        /// <param name="newsService"></param>
         public NewsController(INewsService newsService)
         {
             _newsService = newsService;
         }
 
+        /// <summary>
+        /// Function to get all the news.
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <param name="q"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
         [HttpGet("getAll")]
         public IActionResult GetAll(string searchType, string q = "", string category = "")
         {
@@ -35,6 +46,11 @@ namespace server.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete from the favorites list
+        /// </summary>
+        /// <param name="news"></param>
+        /// <returns></returns>
         [HttpDelete("deleteFromFavorites")]
         public IActionResult DeleteFromFavorites([FromBody] News news)
         {
@@ -50,6 +66,11 @@ namespace server.Controllers
             }
         }
 
+        /// <summary>
+        /// Add news to the favorites list
+        /// </summary>
+        /// <param name="news"></param>
+        /// <returns></returns>
         [HttpPost("addToFavorites")]
         public IActionResult AddToFavorites([FromBody] News news)
         {
@@ -68,6 +89,10 @@ namespace server.Controllers
             }
         }
 
+        /// <summary>
+        /// Get favorites news 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getFavorites")]
         public IActionResult GetFavorites()
         {

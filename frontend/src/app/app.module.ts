@@ -12,7 +12,6 @@ import { ApiService } from './services/api.service';
 import { HttpModule } from '../../node_modules/@angular/http';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { SingleNewsComponent } from './components/single-news/single-news.component';
-import { DummyComponent } from './components/dummy/dummy.component';
 import { FourNotFourComponent } from './components/four-not-four/four-not-four.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { FourNotFourComponent } from './components/four-not-four/four-not-four.c
     FooterComponent,
     NewsComponent,
     SingleNewsComponent,
-    DummyComponent,
     FourNotFourComponent
   ],
   imports: [

@@ -19,7 +19,9 @@ export class SingleNewsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   addOrRemoveFavorite() {
+    // Delete news from favorites
     if (this.news.newsId) {
       this.apiService.delete(Constants.UrlConstants.removeFromFavorites, this.news)
         .subscribe(
@@ -30,6 +32,7 @@ export class SingleNewsComponent implements OnInit {
             console.log(error);
           });
     } else {
+      // Add news to Favorites list
       this.apiService.post(Constants.UrlConstants.addToFavorites, this.news)
         .subscribe(
           data => {

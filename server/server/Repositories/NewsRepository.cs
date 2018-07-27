@@ -17,6 +17,13 @@ namespace server.Repositories
 
         }
 
+        /// <summary>
+        /// Get all news from NewsApi.org
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <param name="q"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public string GetAllNewsFromNewsDb(string searchType, string q, string category)
         {
             var apiUrl = $"{ApiConstants.baseUrl}{searchType}{ApiConstants.apiKey}";

@@ -29,7 +29,7 @@ services:
     environment:
       - DBHOST=newsdb
       - ASPNETCORE_ENVIRONMENT=Development
-      - NewsDbConnection="data source=newsdb;initial catalog=NewsDB;"
+      - NewsDbConnection="data source=newsdb;initial catalog=NewsDB;User=sa;Password=P@ssw0rd"
   newsapp:
     image: newsapp
     ports:

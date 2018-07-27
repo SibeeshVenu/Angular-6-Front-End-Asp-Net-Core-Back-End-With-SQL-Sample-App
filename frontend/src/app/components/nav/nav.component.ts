@@ -13,11 +13,6 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
   search() {
-    this.redirect('search/' + this.searchText);
-  }
-  redirect(uri: string) {
-    this.route.navigateByUrl('/DummyComponent', { skipLocationChange: true }).then(() => {
-      this.route.navigate([uri]);
-    });
+    this.route.navigate(['search/' + this.searchText]);
   }
 }

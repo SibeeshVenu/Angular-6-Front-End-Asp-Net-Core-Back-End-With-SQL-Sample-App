@@ -13,17 +13,18 @@ export class NewsComponent implements OnInit {
   searchType: string;
   searchText: string;
   news: Array<News> = new Array<News>();
-
   constructor(private apiService: ApiService,
     private activatedRoute: ActivatedRoute
   ) {
-
+    this.activatedRoute.params.subscribe(val => {
+      this.getNews();
+    });
   }
 
   ngOnInit() {
-    this.getNews();
   }
 
+  // Get news
   getNews() {
     this.activatedRoute.data.subscribe((data) => this.searchType = data.searchType);
     if (this.searchType === 'news/getAll?searchType=' + Constants.UrlConstants.search) {
@@ -46,9 +47,8 @@ export class NewsComponent implements OnInit {
         });
   }
 
+  // Bind news to UI
   bindNews(data: Array<News>) {
-    data.forEach((n: News) => {
-      this.news.push(n);
-    });
+    this.news = data;
   }
 }

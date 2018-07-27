@@ -44,8 +44,8 @@ namespace server
             services.AddTransient<NewsApiContext>();
 
             services.AddDbContext<NewsApiContext>(options =>
-                options.UseSqlServer(Environment.GetEnvironmentVariable("NewsDbConnection")));
-                //options.UseSqlServer(Configuration.GetConnectionString("NewsDbConnection")));
+                //options.UseSqlServer(Environment.GetEnvironmentVariable("NewsDbConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("NewsDbConnection")));
             services.AddMvc();
         }
 

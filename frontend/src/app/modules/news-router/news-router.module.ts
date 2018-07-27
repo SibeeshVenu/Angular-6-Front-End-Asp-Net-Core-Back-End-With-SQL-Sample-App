@@ -4,7 +4,6 @@ import { HomeComponent } from '../../components/home/home.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { NewsComponent } from '../../components/news/news.component';
 import { Constants } from '../../constants';
-import { DummyComponent } from '../../components/dummy/dummy.component';
 import { FourNotFourComponent } from '../../components/four-not-four/four-not-four.component';
 
 const routes: Routes = [
@@ -37,10 +36,6 @@ const routes: Routes = [
         data: {
             searchType: 'news/getAll?searchType=' + Constants.UrlConstants.search
         }
-    },
-    {
-        path: 'DummyComponent',
-        component: DummyComponent
     },
     {
         path: 'favorites',

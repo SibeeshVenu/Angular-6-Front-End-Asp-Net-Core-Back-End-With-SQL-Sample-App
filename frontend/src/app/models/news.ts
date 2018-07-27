@@ -2,6 +2,7 @@ export class News {
     newsId: number;
     id: number;
     title: string;
+    shortTitle: string;
     author: string;
     description: string;
     url: string;

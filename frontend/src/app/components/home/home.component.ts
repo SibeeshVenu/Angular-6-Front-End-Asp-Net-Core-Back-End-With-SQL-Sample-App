@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.getNewsCategoryWise();
   }
 
+  // Get the category wise news, news will be loaded according to the news drop down selection
   getNewsCategoryWise() {
     this.searchType = 'news/getAll?category=' + this.selected + '&searchType=' + Constants.UrlConstants.getTopHeadlinesNews;
     this.apiService.get(this.searchType)
@@ -47,18 +48,20 @@ export class HomeComponent implements OnInit {
         });
   }
 
+  // Bind the news to UI
   bindNewsCategoryWise(data: Array<News>) {
     this.zone.run(() => {
       this.categoryNews = [];
       data.forEach((n: News) => {
         if (n.urlToImage && this.validateNews(n)) {
-          n.title = n.title.substring(0, 30);
+          n.shortTitle = n.title.substring(0, 30);
           this.categoryNews.push(n);
         }
       });
     });
   }
 
+  // Get top headlines news
   getTopHeadlines() {
     this.searchType = 'news/getAll?searchType=' + Constants.UrlConstants.getTopHeadlinesNews;
     this.apiService.get(this.searchType)
@@ -75,10 +78,11 @@ export class HomeComponent implements OnInit {
         });
   }
 
+  // Bind headlines to UI
   bindHeadlines(data: Array<News>) {
     data.forEach((n: News) => {
       if (n.urlToImage && this.validateNews(n)) {
-        n.title = n.title.substring(0, 30);
+        n.shortTitle = n.title.substring(0, 30);
         this.news.push(n);
       }
     });
