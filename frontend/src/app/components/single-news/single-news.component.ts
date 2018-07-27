@@ -33,6 +33,7 @@ export class SingleNewsComponent implements OnInit {
           });
     } else {
       // Add news to Favorites list
+      this.news.newsId = null;
       this.apiService.post(Constants.UrlConstants.addToFavorites, this.news)
         .subscribe(
           data => {

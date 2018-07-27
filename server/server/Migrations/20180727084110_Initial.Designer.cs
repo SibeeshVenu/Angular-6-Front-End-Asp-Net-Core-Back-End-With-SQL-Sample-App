@@ -10,9 +10,10 @@ using System;
 namespace server.Migrations
 {
     [DbContext(typeof(NewsApiContext))]
-    partial class NewsApiContextModelSnapshot : ModelSnapshot
+    [Migration("20180727084110_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
